@@ -1,0 +1,20 @@
+---
+databaseChangeLog:
+
+  - property:
+      name: now
+      value: sysdate
+      dbms: oracle
+  - property:
+      name: now
+      value: now()
+      dbms: mysql
+  - property:
+      name: now
+      value: now()
+      dbms: postgres
+
+  - include:
+      file: db/changelog/changesets/001-order-pizza-create-table.yml
+  - include:
+      file: db/changelog/changesets/002-order-topping-create-table.yml

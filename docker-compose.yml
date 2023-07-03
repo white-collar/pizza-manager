@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  pizza-manager:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: eugene/pizza_manager
+    platform: linux/arm64/v8
+    environment:
+      - POSTGRES_CONNECTION_STRING=jdbc:postgresql://postgres:5432/postgres
+    ports:
+      - "9090:9090"
+    depends_on:
+      - postgres
+    networks:
+      - pizza
+
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5431:5432"
+    networks:
+      - pizza
+
+networks:
+  pizza:
+    driver: bridge

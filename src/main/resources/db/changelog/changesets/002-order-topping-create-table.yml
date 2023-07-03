@@ -1,0 +1,25 @@
+---
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: eugen.shmorgun@gmail.com
+      changes:
+        - createTable:
+            tableName: order_topping
+            columns:
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: toppings
+                  type: json
+              - column:
+                  name: email
+                  type: varchar(255)
